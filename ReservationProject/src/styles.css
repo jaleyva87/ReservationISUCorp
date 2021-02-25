@@ -1,0 +1,52 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background-color: lightgray}
+.menu {
+  top: 137px;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  border: none;
+  color: #ff0000;
+  position: absolute;
+  margin: 0 auto;
+  max-width: 1680px;
+}
+
+.menubutton {
+  position: relative;
+  background-color: grey;
+  color: white;
+  top: 30px;
+  left: 750px;
+}
+
+#globalinfotext {
+  position: relative;
+  top: 30px;
+  left: 350px;
+  font: 21px sans-serif;
+}
+
+.containerglobal {
+  top: 233px;
+  left: 200px;
+  right: 200px;
+  align-items: center;
+  position: absolute;
+  max-width: 900px;
+  justify-content: center;
+}
+
+.containerglobal2 {
+  top: 233px;
+  left: 200px;
+  right: 200px;
+  align-items: center;
+  position: absolute;
+  max-width: 900px;
+  justify-content: center;
+}
+

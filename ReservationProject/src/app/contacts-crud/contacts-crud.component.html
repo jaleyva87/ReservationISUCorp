@@ -1,0 +1,86 @@
+<div class="menu">
+  <label id="globalinfotext">Create Contact</label>
+    <button class="menubutton" mat-raised-button type="button" [routerLink]="['/reservation-list']">RESERVATION LIST</button>
+</div>
+
+<mat-card class="containerglobal">
+  <form [formGroup]="contactForm" #formDir="ngForm" novalidate>
+
+    <table>
+      <tr>
+        <td>
+
+          <mat-form-field>
+            <mat-label>Contact Name...</mat-label>
+            <input matInput minlength="1" required type="text" [formControl]="myControl" [matAutocomplete]="auto" #box (keyup.enter)="catchKeyup(box.value)" (blur)="catchKeyup(box.value)">
+            <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+              <mat-option *ngFor="let option of filteredOptions | async" [value]="option" (onSelectionChange)="catchKeyup(option.name)">
+                {{option.name}}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+          <div>
+            <span name="namespan" class="text-danger" *ngIf="_name.length  === 0 && formDir.submitted">Name is required.</span>
+          </div>
+        </td>
+        <mat-divider></mat-divider>
+
+        <td>
+          <mat-form-field class="example-full-width">
+            <mat-label>Contact Type</mat-label>
+            <mat-select formControlName="contacttype" [value]="_contactype" requierd #conttype (blur)="changeContactType(conttype.value)">
+              <mat-option value="1">{{'Type Contact 1'}}</mat-option>
+              <mat-option value="2">{{'Type Contact 2'}}</mat-option>
+              <mat-option value="3">{{'Type Contact 3'}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <div>
+          </div>
+
+        </td>
+        <td>
+
+          <mat-form-field>
+            <input matInput formControlName="phone" type="tel" placeholder="Phone:" [value]="_phone" #clicphone (keyup)="clickOnPhone($event)" (keypress)="clickOnPhone($event)">
+          </mat-form-field>
+
+
+        </td>
+        <td>
+
+          <mat-form-field>
+            <input matInput required formControlName="date" type="date" placeholder="Birth Date:" [value]="_date" #dater (blur)="changeDate(dater.value)">
+          </mat-form-field>
+          <div>
+          </div>
+        </td>
+
+      </tr>
+
+      <tr>
+        <td colspan="6">
+          <div>
+            <!--this is the place for Rich Text Editor. It was taken from https://onaluf.github.io/fate/-->
+            <mat-form-field class="richtext">
+              <fate-material placeholder="Write your description here"></fate-material>
+            </mat-form-field>
+          </div>
+        </td>
+      </tr>
+    </table>
+    <mat-divider></mat-divider>
+    <section>
+      <div class="example-button-row">
+
+        <mat-form-field class="example-full-width">
+          <mat-label></mat-label>
+          <input matInput disabled [value]="infotext" name="infotextcn">
+        </mat-form-field>
+
+        <button mat-raised-button color="warn" type="submit" (click)="createContact()">Send</button>
+      </div>
+    </section>
+
+  </form>
+</mat-card>
+<router-outlet></router-outlet>
